@@ -1,8 +1,3 @@
----
-date: 2023-09-05
-author: certainstar
----
-
 # 课前须知
 > [课程主页](http://staff.ustc.edu.cn/~lszhuang)
 http://staff.ustc.edu.cn/~lszhuang
