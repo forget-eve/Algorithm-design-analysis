@@ -22,6 +22,34 @@
       window.$docsify = { 
         homepage:'README.md',
         themeColor: '#143657',
+        markdown: {
+          renderer: {
+            code: function(code, lang) {
+              var html = '';// 搜索 mermaid 代码
+              if(code.match(/^sequenceDiagram/) || code.match(/^graph/) || code.match(/^gantt/)){
+              // 生成一个 mermaid 图表的容器
+                html = '<div class="mermaid">' + code + '</div>';
+              }else {
+                // 如果不是 mermaid 代码，则正常渲染
+                var hl = Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup)
+                html = '<pre v-pre data-lang="' + lang + '"><code class="lang-' + lang + '">' + hl + '</code></pre>';
+              }
+              return html;
+            }
+          }
+        },
+        plugins: [
+          function (hook, vm) {
+            hook.ready(function () {
+            // 类似 jQuery.ready 初始化 mermaid, 禁用自动渲染
+              mermaid.initialize({ startOnLoad: false });
+            });
+            hook.doneEach(function () {
+            // 每个页面渲染完成后手动渲染 mermaid 图表
+              mermaid.init(undefined, '.mermaid');
+            });
+          }
+        ]
       };
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
