@@ -138,14 +138,13 @@ NSERTION-SORT(A)                                               cost times
 10 }
 ```
 - 总时间效率
-
 $$T(n)=c_1 n+c_2 (n-1)+c_4 (n-1)+c_5 \sum\limits_{j=2}^n t_j +c_6 \sum\limits_{j=2}^n (t_j -1)+c_7 \sum\limits_{j=2}^n (t_j -1) +c_8 (n-1)
 $$
-
 - 如果数组是排好序的，则会出现最好情况：
-
-$$
+$$\begin{equation}
+\begin{aligned}
 T(n)=c_1 n+c_2 (n-1)+c_4 (n-1)+c_5 (n-1) +c_8 (n-1)=(c_1 +c_2 +c_4 +c_5 +c_8)n–(c_2 +c_4 +c_5 +c_8))=an+b
+\end{aligned}
+\end{equation}
 $$
-
 - 如果数组是逆序排序的，则会出现最坏情况：
