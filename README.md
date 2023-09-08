@@ -144,3 +144,5 @@ $$
 $$T(n)=c_1 n+c_2 (n-1)+c_4 (n-1)+c_5 (n-1) +c_8 (n-1)=(c_1 +c_2 +c_4 +c_5 +c_8)n–(c_2 +c_4 +c_5 +c_8))=an+b
 $$
 - 如果数组是逆序排序的，则会出现最坏情况：
+$$T(n)=c_1 n+c_2 (n-1)+c_4 (n-1)+c_5 \left(\frac{n(n+1)}{2}-1\right)+c_6 \left(\frac{n(n-1)}{2}\right)+c_7 \left(\frac{n(n-1)}{2}\right)+c_8 (n-1)=an^3 +bn+3
+$$
