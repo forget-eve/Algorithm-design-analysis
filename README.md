@@ -122,3 +122,16 @@ K --> L[算法的执行过程可应用于所有同类问题求解,不是仅适�
 输 入: n 个输入数<𝑎1,𝑎2,…,𝑎𝑛>
 输 出: 输入系列的一个排序 <𝑎1,𝑎2,…,𝑎𝑛> , 使得𝑎1≤𝑎2≤⋯≤𝑎𝑛
 ```
+```C
+NSERTION-SORT(A)                                               cost times
+1 for( j = 2; j <=length[A]; j++)                               c1   n
+2 { key = A[j]                                                  c2   n-1
+3     // Insert A[j] into the sorted sequence A[1 .. j-1]   0   n-1
+4     i = j-1          c4  n-1
+5     while( i > 0 && A[i] > key)                                c5
+6     { A[i+1] = A[i]                                            c6
+7         i = i-1                                                c7
+8     }
+9     A[i+1] = key                                               c8 n-1
+10 }
+```
