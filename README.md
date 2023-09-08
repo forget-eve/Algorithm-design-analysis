@@ -256,6 +256,15 @@ N[1] --> F
 
 ##### 分支法分析
 ###### 分治法时间复杂度
+
+$$ 
+T(n)=
+\begin{cases}
+  Θ(1), & \text{if } n \geq c \\
+  aT(n/b)+D(n)+C(n), & \text{otherwise } 
+\end{cases}
+$$
+
 ➢ D(n)是把原问题分解为子问题所花的时间；
 
 ➢ C(n)是把子问题的解合并为原问题的解所花的时间；
@@ -272,9 +281,29 @@ N[1] --> F
   > 
   > ➢ 合并：MERGE过程的运行时间为C(n)=Θ(n)。
 
+$$
+T(n)=
+\begin{cases}
+  Θ(1), & \text{if } n =1 \\
+  2T(n/2)+Θ(n), & \text{if } n >1
+\end{cases}
+$$
 ##### 归并排序时间复杂度求解
 - 递归式重写
 
+$$
+T(n)=
+\begin{cases}
+  Θ(1), & \text{if } n =1 \\
+  2T(n/2)+Θ(n), & \text{if } n >1
+\end{cases}
+ →
+T(n)=
+\begin{cases}
+  Θ(1), & \text{if } n =1 \\
+  2T(n/2)+cn, & \text{if } n >1
+\end{cases}
+$$
 - 递归式求解
 $$cn(\lg n+1)=cn\lg n+cn=Θ(n\lg n)$$
 其中：
