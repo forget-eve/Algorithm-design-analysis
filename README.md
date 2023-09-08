@@ -138,6 +138,7 @@ NSERTION-SORT(A)                                               cost times
 10 }
 ```
 - 总时间效率
+$$注：t_j为当第j轮执行for循环时，while语句需要执行的次数(重排前面排过序列的次数)$$
 $$T(n)=c_1 n+c_2 (n-1)+c_4 (n-1)+c_5 \sum\limits_{j=2}^n t_j +c_6 \sum\limits_{j=2}^n (t_j -1)+c_7 \sum\limits_{j=2}^n (t_j -1) +c_8 (n-1)
 $$
 - 如果数组是排好序的，则会出现最好情况：
