@@ -258,10 +258,13 @@ N[1] --> F
 ###### 分治法时间复杂度
 $$
 \begin{equation}
-sgn(\sigma (t))=\left\{
-\begin{array}{cl}
-+1 &  \sigma (t) > 0 \\ 0  &  \sigma (t) = 0 \\ -1 &  \sigma (t) < 0 \\
-\end{array} \right.
+\begin{aligned}
+y(x)=\left\{
+	-1 \quad x<0\\
+	0 \quad x=0\\
+	1 \quad x>0\\
+	\right
+ \end{aligned}
 \end{equation}
 $$
 
