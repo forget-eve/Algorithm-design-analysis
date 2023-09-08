@@ -215,12 +215,12 @@ MERGE(A, p, q, r)                                       cost  times
 5     do L[i]←A[p+i-1]                                   c    n1
 6 for j←1 to n2                                          c    n2+1
 7     do R[j]←A[q+j]                                     c    n2
-8 L[n1+1]←∞           //设置哨兵元素                       c    1
-9 R[n2+1]←∞          //设置哨兵元素                        c    1
+8 L[n1+1]←∞          //设置哨兵元素                       c    1
+9 R[n2+1]←∞          //设置哨兵元素                       c    1
 10 i←1                                                   c    1
 11 j←1                                                   c    1
 12 for k←p to r                                          c    r-p+2
-13    do if L[i]≤R[j]                                     c    r-p+1
+13    do if L[i]≤R[j]                                    c    r-p+1
 14        then A[k]←L[i]                                 c    x
 15            i←i+1                                      c    x        
 16        else A[k]←R[j]                                 c    r-p+1-x
