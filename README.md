@@ -210,7 +210,7 @@ C[4 5 7 6] -->A
 MERGE(A, p, q, r)                                       cost  times
 1 n1 ← q-p+1                                             c    1
 2 n2 ← r-q                                               c    1
-3 create arrays L[1 .. n1+1] and R[1 .. n2+1]           c    1
+3 create arrays L[1 .. n1+1] and R[1 .. n2+1]            c    1
 4 for i←1 to n1                                          c    n1+1
 5     do L[i]←A[p+i-1]                                   c    n1
 6 for j←1 to n2                                          c    n2+1
