@@ -137,3 +137,6 @@ NSERTION-SORT(A)                                               cost times
 9     A[i+1] = key                                               c8 n-1
 10 }
 ```
+- 总时间效率
+$$T(n)=c_1 n+c_2 (n-1)+c_4 (n-1)+c_5 \sum\limits_{j=2}^n t_j +c_6 \sum\limits_{j=2}^n (t_j -1)+c_7 \sum\limits_{j=2}^n (t_j -1) +c_8 (n-1)
+$$
