@@ -336,22 +336,18 @@ $$o\approx <;O\approx \leq; \Theta\approx =;\Omega\approx \geq;\omega\approx >$$
   > ③ 𝑓(𝑛)∈ 𝜃(𝑔(𝑛))表示𝑓(𝑛)是𝜃(𝑔(𝑛))的成员，可以简写为𝑓(𝑛)= 𝜃(𝑔(𝑛)) 。
 
 #### 举例
-$$\begin{aligned}
-& \ 例子1：证明\frac{n^2}{2}-3n=\omega(n^2)\\
-& \ 证明：假设∃c_1,c_2和n_0,使得∀𝑛 ≥ 𝑛_0,有\\
-& \ c_1 n^2 \leq\frac{n^2}{2}-3n \leq c_2n^2\\
-& \ ⟹ c_1 \leq\frac{1}{2}-\frac{3}{n}\leq c_2 \\
-& \ 当𝑛 → ∞时，可以得到c_1 \leq\frac{1}{2},c_2\geq\frac{1}{2}。\\
-& \ 取c_1=\frac{1}{14},c_2=\frac{1}{2},以及n_0=7,可以证明\frac{n^2}{2}-3n=\omega(n^2)\\
-\end{aligned}
-$$
 
-$$
-\begin{aligned}
-& \ 例子2：证明6n^3\neq\omega(n^2)\\
-& \ 证明：(反证法)\\
-& \ 假设∃c_2 >0,n_0 >0使得所有的n>n_0 ,由6n^3\leq\omega(n^2)。\\
-& \ 也就是说,对于所有n\geq n_0 都有n\leq c_2/6成立,而不等式的右边\\
-& \ 是个常数，显然不可能对任意大的𝑛成立。
-\end{aligned}
-$$
+例子1：证明 $\frac{n^2}{2}-3n=\omega(n^2)$
+
+证明：假设 $∃c_1,c_2和n_0$ ,使得 $∀𝑛 ≥ 𝑛_0$ ,有 $c_1 n^2 \leq\frac{n^2}{2}-3n \leq c_2n^2$
+
+⟹ $c_1 \leq\frac{1}{2}-\frac{3}{n}\leq c_2$ 当𝑛 → ∞时，可以得到 $c_1 \leq\frac{1}{2},c_2\geq\frac{1}{2}$ 。
+
+取 $c_1=\frac{1}{14},c_2=\frac{1}{2}$ ,以及 $n_0=7$ ,可以证明 $\frac{n^2}{2}-3n=\omega(n^2)$
+
+
+例子2：证明 $6n^3\neq\omega(n^2)$
+证明：(反证法)
+假设 $∃c_2 >0,n_0 >0$ 使得所有的 $n>n_0$ ,由 $6n^3\leq\omega(n^2)$ 。
+
+也就是说,对于所有 $n\geq n_0$ 都有 $n\leq c_2/6$ 成立,而不等式的右边是个常数，显然不可能对任意大的𝑛成立。
