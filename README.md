@@ -729,3 +729,21 @@ $$T(n)=2T(\lfloor\squr n\rfloor)+\lg n$$
 
 ### 迭代法
 - [x] 核心思路： 扩展（迭代）原递归式并将其表示成更小的项以及初始条件的累和的形式。
+#### 举例
+$T(n)=3T(\lfloor\frac{n}{4}\rfloor)+n=n+3T(\lfloor\frac{n}{4}\rfloor)$
+$=n+3(\lfloor\frac{n}{4}\rfloor+3T(\lfloor\frac{n}{4^2}\rfloor))$
+$=n+3\lfloor\frac{n}{4}\rfloor+3^2(\lfloor\frac{n}{4^2}\rfloor+3T(\lfloor\frac{n}{4^3}\rfloor))$
+$=n+3\lfloor\frac{n}{4}\rfloor+3^2\lfloor\frac{n}{4^2}\rfloor+3^3(\lfloor\frac{n}{4^3}\rfloor+3T(\lfloor\frac{n}{4^4}\rfloor))$
+$=...$
+$=n+\sum\limits_{i=1}^k (3^i\lfloor\frac{n}{4^i}\rfloor)$
+$=？$
+
+> - [ ] 展开终止条件：当子问题规模达到边界条件时, $\lfloor\frac{n}{4^i}\rfloor$ =1时迭代终止。
+> - [ ] 考虑到 $\lfloor\frac{n}{4^i}\rfloor \leq \frac{n}{4^i}$ ，可以得到下面递减的等比级数：
+> > $T(n)=3T(\lfloor\frac{n}{4}\rfloor)+n=n+\sum\limits_{i=1}^k (3^i\lfloor\frac{n}{4^i}\rfloor)$
+> >
+> > $\leq n+\sum\limits_{i=1}^k (3^i\*\frac{n}{4^i})=n\sum\limits_{i=1}^k\left(\frac{3}{4}\right)^i$
+> >
+> > $\leq n\sum\limits_{i=1}^{\infty}\left(\frac{3}{4}\right)^i=4n$
+> >
+> > $=O(n)$
