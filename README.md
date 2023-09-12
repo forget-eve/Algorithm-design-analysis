@@ -210,21 +210,21 @@ C[4 5 7 6] -->A
 MERGE(A, p, q, r)                                       cost  times
 1 n1 ← q-p+1                                             c    1
 2 n2 ← r-q                                               c    1
-3 create arrays L[1 .. n1+1] and R[1 .. n2+1]            c    1
+3 create arrays L[1 .. n1+1] and R[1 .. n2+1]               c    1
 4 for i←1 to n1                                          c    n1+1
-5     do L[i]←A[p+i-1]                                   c    n1
+5     do L[i]←A[p+i-1]                                    c    n1
 6 for j←1 to n2                                          c    n2+1
 7     do R[j]←A[q+j]                                     c    n2
-8 L[n1+1]←∞          //设置哨兵元素                       c    1
-9 R[n2+1]←∞          //设置哨兵元素                       c    1
-10 i←1                                                   c    1
-11 j←1                                                   c    1
+8 L[n1+1]←∞          //设置哨兵元素                         c    1
+9 R[n2+1]←∞          //设置哨兵元素                         c    1
+10 i←1                                                  c    1
+11 j←1                                                  c    1
 12 for k←p to r                                          c    r-p+2
 13    do if L[i]≤R[j]                                    c    r-p+1
 14        then A[k]←L[i]                                 c    x
 15            i←i+1                                      c    x        
-16        else A[k]←R[j]                                 c    r-p+1-x
-17            j←j+1                                      c    r-p+1-x
+16        else A[k]←R[j]                                c    r-p+1-x
+17            j←j+1                                     c    r-p+1-x
 ```
   - 时间复杂度：
 $$𝜃(𝑛_1 + 𝑛_2)= 𝜃(𝑛)$$
