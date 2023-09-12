@@ -559,3 +559,121 @@ $$\lg^\*2=1,\lg^\*4=2,\lg^\*16=3,\lg^\*65536=4,\lg^\*2^65536=5$$
 ## 递归式求解
 ### 代换法
 #### 引言
+- [x] 递归式: 是一组等式或不等式，用更小输入下该函数的值来定义自身。
+
+$$
+T(n)=
+\begin{cases}
+  1, & \text{if } n =1 \\
+  2T\left(\frac{n}{2}\right)+n, & \text{if } n >1
+\end{cases}
+$$
+
+- [x] 一些细节：
+1. 假设函数自变量为整数，忽略上取整和下取整，如：
+
+$$
+T(n)=
+\begin{cases}
+  \theta (1), & \text{if } n =1 \\
+  T\left(\lceil\frac{n}{2}\rceil\right)+T\left(\lfloor\frac{n}{2}\rfloor\right)+\theta (n), & \text{if } n >1
+\end{cases}
+$$
+
+2. 忽略递归式的边界条件，并假设对于小的n值，T(n)是常量。
+
+$$
+T(n)=2T\left(\frac{n}{2}\right)+\theta (n)
+$$
+
+- [x] 递归式求解方法：
+  > A. 代 换 法：先猜有某个解存在，用数学归纳法证明猜测的正确性；
+  >
+  > B. 迭 代 法：把递归式转化为求和表达式，然后求和式的界；
+  >
+  > C. 递归树法：直观地表达了迭代法；
+  >
+  > D. 主 方 法：给出求解𝑇(𝑛)=𝑎𝑇(𝑛/𝑏)+𝑓(𝑛)这种形式递归式的简单方法。
+#### 代换法
+- [x] 代换法求解步骤：
+  > ① 先猜测解的基本形式
+  >
+  > ② 用数学归纳法证明猜测的正确性
+  > > A. 先证明一般情况成立
+  > >
+  > > B. 再考虑边界条件
+
+##### 示例
+> 求解T(n)的表达式
+
+$$
+T(n)=
+\begin{cases}
+  1, & \text{if } n =1 \\
+  2T\left(\frac{n}{2}\right)+n, & \text{if } n >1
+\end{cases}
+$$
+
+> 答案1
+> 
+> ① 猜测问题的解是 𝑇(𝑛) = 𝑛lgn + 𝑛 。
+> 
+> ② 归纳证明：
+> > A. 当𝑛 = 1时， 𝑇(1)= 𝑛lg𝑛 + 𝑛 = 1 成立；
+> > 
+> > B. 假设 ∀𝑘 < 𝑛 时，有 𝑇 𝑘 = 𝑘lg𝑘 + 𝑘 。当𝑘 ≥ 𝑛时，有：
+> > 
+> > $T(n)=2T\left(\frac{n}{2}\right)+n$
+> > $=2[\left(\frac{n}{2}\right)+\lg \left(\frac{n}{2}\right)+\frac{n}{2}]+n$ ( ***归纳假设*** )
+> > $=n\lg \left(\frac{n}{2}\right)+n+n$
+> > $=n(\lg n-\lg 2)+2n$
+> > $=𝑛lg𝑛 + 𝑛$
+
+> 答案2
+> 
+> ① 猜测问题的解是 𝑇(𝑛) = 𝑶(𝑛lgn) 。
+>
+> ② 证明𝑇(𝑛)≤ 𝑐𝑛lg𝑛 对某正常量𝑐, $𝑛_0$ 成立。
+> > A. 假设该不等式关系对𝑘 < 𝑛 成立，则有 $$T\left(\frac{n}{2}\right)\leq \frac{cn}{2}\lg \frac{n}{2}$$
+> > B.当𝑘 ≥ 𝑛时，有：
+> >
+> > $T(n)=2T\left(\frac{n}{2}\right)+n \leq cn\lg \frac{n}{2}+n$
+> > $=cn\lg n-cn\lg 2+n$
+> > $≤ 𝑐𝑛\lg 𝑛 ， ∀𝑐 \geq 1$
+> > ***C. 当𝒏 = 𝟏时，𝑻(𝟏) ≤ 𝟎, 与边界条件矛盾！！！***
+> > **D. 取 $n_0=2$ ,c=1时，上述结论成立，证毕**
+
+> ***注：总结：*** `如果归纳假设与边界条件不一致，可以设立新的边界条件使得归纳证明成立。`
+
+##### 如何做一个好的猜测？
+$$
+T(n)=T\left(\lceil\frac{n}{2}\rceil\right)+T\left(\lfloor\frac{n}{2}\rfloor\right)+1
+$$
+
+> 解：首先，猜测解为T(n)= 𝑂(𝑛) ；
+>
+> 然后，证明𝑇(𝑛)≤𝑐𝑛对某正常数𝑐, $𝑛_0$ 成立。
+>
+> A. 假设该结论对𝑘 < 𝑛成立，则有
+>
+> $T\left(\lceil\frac{n}{2}\rceil\right)\leq c\lceil\frac{n}{2}\rceil$ , $T\left(\lfloor\frac{n}{2}\rfloor\right)\leq c\lfloor\frac{n}{2}\rfloor$
+>
+> B. 当𝑘 ≥ 𝑛时，则有
+> 
+> $T(n) \leq c\lceil\frac{n}{2}\rceil+c\lfloor\frac{n}{2}\rfloor+1 \leq cn+1$
+>
+> `这对任意𝒄都不意味着 𝑇(𝑛)≤𝑐𝑛 ,怎么处理？`
+
+```math
+预证结论：𝑇(𝑛)≤ 𝑐𝑛
+推导结果：𝑇(𝑛)≤ 𝑐𝑛 + 1
+```
+
+<p align="center">↓<span></span></p>
+
+```math
+解决方案：可以通过对更小的值假设更强的条件，对于一个给定值证明更强的结论。
+```
+
+<p align="center">↓<span></span></p>
+
