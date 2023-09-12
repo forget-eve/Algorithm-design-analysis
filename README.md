@@ -474,7 +474,7 @@ $an^2+bn+c$ , $n^3$ , $n^{2.000001}$ , $n^2 \lg \lg \lg n$
   > $𝒇(𝒏)=\Omega(𝒇(𝒏))$
 
 - [x] 与实数比较进行类比
-  > $𝒇(𝒏)=o(𝑔(𝑛)) \approx a<b$
+  > $𝒇(𝒏)=o(𝑔(𝑛)) \approx a < b$
   >
   > $𝒇(𝒏)==O(𝑔(𝑛)) \approx a \leq b$
   > 
@@ -491,3 +491,28 @@ $an^2+bn+c$ , $n^3$ , $n^{2.000001}$ , $n^2 \lg \lg \lg n$
   > > $-1 \leq sinn \leq 1⟹n^0 \leq n^{1+𝑠𝑖𝑛𝑛} \leq n^2$
   > >
   > > $n^{1+𝑠𝑖𝑛𝑛} \leq n \leq n^{1+𝑠𝑖𝑛𝑛} ,矛盾$
+
+## 常用函数
+### 标准记号与常用函数
+- [x] 下取整与上取整(Floors and ceilings)
+$$x-1 < \lfloor x \rfloor \leq x \leq \lceil x \rceil < x+1$$
+- [x] 模运算(Modular arithmetic)
+$$a \ mod \ n=a- \lfloor a/n \rfloor n$$
+- [x] 多项式(Polynomials)
+$$p(n)=\sum\limits_{i=0}^d a_in^i$$
+- [x] 指数(Exponentials)
+- [x] 对数(Logarithms)
+- [x] 阶乘(Factorials)
+> ***斯特林近似公式*** ，考试会给出来，不用特地记
+$$n!=\sqrt{2\pi n}\left(\frac{n}{e}\right)^n\left(1+\theta\left(\frac{1}{n}\right)\right)$$
+$$⟹n!=o(n^n),n!=w(2^n),\lg (n!)=\theta (n\lg n)$$
+- [x] 迭代函数(Functional iteration)
+> 使用记号 $𝑓^{(𝑖)}(𝑛)$ 来表示函数𝑓(𝑛)使用初始值𝑛进行迭代𝑖次后的结果。对非负的𝑖，递归地定义
+$$
+𝑓^{(𝑖)}(𝑛)=
+\begin{cases}
+  n, & \text{if } i =0 \\
+  𝑓(𝑓^{(i-1)}(n)), & \text{if } i >0
+\end{cases}
+$$
+> 假设𝑓 𝑛 = 2𝑛，那么
