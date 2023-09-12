@@ -650,7 +650,7 @@ $$
 T(n)=T\left(\lceil\frac{n}{2}\rceil\right)+T\left(\lfloor\frac{n}{2}\rfloor\right)+1
 $$
 
-> 解：首先，猜测解为T(n)= 𝑂(𝑛) ；
+> 解：首先，猜测解为T(n)=𝑂(𝑛) ；
 >
 > 然后，证明𝑇(𝑛)≤𝑐𝑛对某正常数𝑐, $𝑛_0$ 成立。
 >
@@ -677,3 +677,55 @@ $$
 
 <p align="center">↓<span></span></p>
 
+> 解：首先，猜测解为T(n)=𝑂(𝑛) ；
+>
+> 然后，证明𝑇(𝑛)≤𝑐𝑛-a对某正常数𝑐, $𝑛_0$ 成立。
+>
+> A. 假设该结论对𝑘 < 𝑛成立，则有
+>
+> $T\left(\lceil\frac{n}{2}\rceil\right)\leq c\lceil\frac{n}{2}\rceil -a$ , $T\left(\lfloor\frac{n}{2}\rfloor\right)\leq c\lfloor\frac{n}{2}\rfloor -a$
+>
+> B. 当𝑘 ≥ 𝑛时，则有
+> 
+> $T(n) \leq c\lceil\frac{n}{2}\rceil -a+c\lfloor\frac{n}{2}\rfloor -a+1 \leq cn+1$
+>
+> $\leq cn-2a+1$
+>
+> $\leq  cn-a,((∀𝑎 \geq 1都成立)$
+>
+> $\leq cn$
+>
+> $因此，当𝒄 = 𝟏, 𝒏_𝟎 = 𝟏可证明𝑻(𝒏) ≤ 𝒄𝒏成立。$
+
+##### 关于部分陷阱
+- [x] 避免陷阱：
+  > $T(n)=2T\left(\lfloor\frac{n}{2}\rfloor\right)+1$
+  > 
+  > 解：首先，猜测解为T(n)=𝑂(𝑛) ；
+  >
+  > 然后，证明𝑇(𝑛)≤𝑐𝑛对某正常数𝑐, $𝑛_0$ 成立。
+  >
+  > A. 假设该结论对𝑘 < 𝑛成立，则有
+  >
+  > $T\left(\lfloor\frac{n}{2}\rfloor\right)\leq c\lfloor\frac{n}{2}\rfloor$
+  >
+  > B. 当𝑘 ≥ 𝑛时，有
+  >
+  > $T(n) \leq 2c\lfloor\frac{n}{2}\rfloor+n \leq cn+n=O(n)$
+  >
+  > 证毕。
+  
+  >  ***`错误！因为没有证明出与归纳假设严格一致的形式！`***
+
+##### 改变变量
+$$T(n)=2T(\lfloor\squr n\rfloor)+\lg n$$
+> 解：令m=lgn，则有 $T(2^m)=2T(2^{\frac{m}{2}})+m$
+>
+> 令 $S(m)T(2^m)$ ,则原递归式可以转为： $S(m)=2S(\frac{m}{2})+m$
+>
+> 上面递归式与之前例题相似有相同的解: $S(m)=O(mlgm)$
+>
+> 最后将变量变换回去得到： $T(n)=T(2^m)=O(mlgm)=O(lgnlglgn)$
+
+### 迭代法
+- [x] 核心思路： 扩展（迭代）原递归式并将其表示成更小的项以及初始条件的累和的形式。
