@@ -718,7 +718,7 @@ $$
   >  ***`错误！因为没有证明出与归纳假设严格一致的形式！`***
 
 ##### 改变变量
-$$T(n)=2T(\lfloor\squr n\rfloor)+\lg n$$
+$$T(n)=2T(\lfloor\sqrt n\rfloor)+\lg n$$
 > 解：令m=lgn，则有 $T(2^m)=2T(2^{\frac{m}{2}})+m$
 >
 > 令 $S(m)T(2^m)$ ,则原递归式可以转为： $S(m)=2S(\frac{m}{2})+m$
