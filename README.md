@@ -1701,4 +1701,123 @@ return n
 </p>
 
 - [x] 二叉树的相关概念
+	> - 二叉树:每个结点至多有两颗子树
+	> - 满二叉树：每层的结点数都是最大结点数的二叉树
+	> - 完全二叉树：所有结点必须和满二叉树中结点在位置上一一对应
 
+- [x] 堆数据结构是一个数组，可以被看成一棵近似的完全二叉树。树中每个结点与数组中存放该结点值的那个元素对应。
+
+<p align="center">
+  <img src="./img/堆和树.png" alt="堆和树">
+  <p align="center">
+   <span>堆和树</span>
+  </p>
+</p>
+
+- [x] 堆的性质
+	> - ① length[A]: 是数组中的元素个数；
+	> - ② heap-size[A]: 是存放在A中的堆的元素个数；
+	> - ③ heap-size[A]≤length[A]
+- [x] 作为数组对象的堆，给某个节点的小标则：
+	> - ① 父节点PARENT(i) = floor(i/2)
+	> - ② 左儿子为LEFT(i) = 2*i;
+	> - ③ 右儿子为RIGHT(i) = 2*i + 1;
+- [x] 堆排序算法使用 ***大根堆*** ，堆中最大元素位于树根。
+
+```mermaid
+graph TB
+A((堆)) --- B(大根堆)
+A --- C(小根堆)
+B --- D[除根结点之外的所有结点都不大于其父结点]
+C --- E[除根结点之外的所有结点都不小于其父结点]
+```
+
+- [x] 视为完全二叉树的堆：
+	> - ① 结点在堆中的高度：从本结点到叶子的最长简单下降路径上边的数目；
+	> - ② 定义堆的高度为树根的高度；
+	> - ③ 具有𝑛个元素的堆其高度为𝜃(lg𝑛)。
+- [x] 大根堆数据结构的基本操作
+	> - ① MAX-HEAPIFY：保持最大堆性质，运行时间𝑂(lg𝑛);
+	> - ② BUILD-MAX-HEAP：从无序的输入数组构造出最大堆，运行时间𝑂(𝑛) ；
+	> - ③ HEAPSORT：对一个无序数组进行原地排序，运行时间𝑂(𝑛lg𝑛)；④ MAX-HEAP-INSERT, HEAP-EXTRACT-MAX, HEAP-INCREASE-KEY和HEAP-MAXIMUM可以让堆结构作为优先队列使用，运算时间为𝑂(lg𝑛)。
+> 堆结构的基本操作时间至多与树的高度正相关。
+
+###### 保持最大堆(MAX-HEAPIFY)
+- [x] 问题描述:MAX-HEAPIFY函数的输入为一个数组𝐴和下标𝑖。假定以LEFT(i)和RIGHT(i)为根的两棵二叉树都是最大堆，MAX-HEAPIFY让A[i]在最大堆中“下降”，使得以i为根的子树成为最大堆。
+
+- [x] 基本思想：从上到下不断调整
+	> - ① 找出𝐴[𝑖], 𝐴[𝐿𝐸𝐹𝑇(𝑖)]和𝐴[𝑅𝐼𝐺𝐻𝑇(𝑖)]中最大者，将其下标存在𝑙𝑎𝑟𝑔𝑒𝑠𝑡；
+	> - ② 交换𝐴[𝑖]和𝐴[𝑙𝑎𝑟𝑔𝑒𝑠𝑡]使得结点𝑖和其子女满足最大堆性质；
+	> - ③ 下标为𝑙𝑎𝑟𝑔𝑒𝑠𝑡的结点在交换后的值是𝐴[𝑖]，以该结点为根的子树有可能违反最大堆性质，对该子树递归调用 MAX-HEAPIFY。
+
+```算法
+MAX-HEAPIFY(A, i)
+1 l ← LEFT( i );
+2 r ← RIGHT( i );
+3 if l ≤ heap-size[A] and A[ l ] > A[ i ]
+4 	then largest ← l
+5 	else largest ← i
+6 if r ≤ heap-size[ A] and A[ r ] > A[ largest ]
+7 	then largest ← r
+8 if largest ≠ i
+9 	then exchange A[ i ] ↔ A[ largest ]
+10 		MAX-HEAPIFY( A, largest )
+```
+
+<p align="center">
+  <img src="./img/从上到下不断调整.png" alt="示例">
+  <p align="center">
+   <span>示例</span>
+  </p>
+</p>
+
+- [x] 时间复杂度分析
+	> 当MAX-HEAPIFY作用在一棵以结点𝑖为根的、大小为𝑛的子树上时，对以𝑖的某个子节点为根的子树大小最多为2𝑛/3（此时，最底层恰好半满）。
+
+> 运行时间递归式：
+
+$$T(n) \leq T\left(\frac{2n}{3}\right)+ \theta(1)$$
+
+> 根据主定理，该递归式的解为𝑇 𝑛 = 𝑂(𝑙𝑔𝑛)。
+> > MAX-HEAPIFY作用于一个高度为ℎ的结点所需的运行时间为𝑂(ℎ)
+
+###### 建堆操作(BUILD-MAX-HEAP)
+- [x] 问题描述
+	> 输入是一个无序数组A，BUILD-MAX-HEAP把数组A变成一个最大堆。
+- [x] 基本思想：
+	> 从最后一个内结点开始，由后往前对数组中每个内结点都调用一次MAX-HEAPIFY，使得以内节点为根的子树满足大根堆性质。不断调整，直到根节点为止。
+
+```算法
+BUILD-MAX-HEAP (A)
+1 heap-size[A] ← length[A];
+2 for i ← FLOOR( length[A]/2 ) downto 1
+3 	do MAX-HEAPIFY(A, i)
+```
+
+- [x] 时间复杂度分析
+	> 在树中不同高度的结点处运行MAX-HEAPIFY的时间不同，其作用在高度为ℎ的结点上的运行时间为𝑂(ℎ)，故BUILD-MAX-HEAP时间代价为
+
+$$T(n) \leq \sum\limits_{h=0}^{|\lg{n}|}\lceil \frac{n}{2^{h+1}} \rceil O(h)=O\left(n \sum\limits_{h=0}^{|\lg{n}|}\frac{n}{2^{h+1}}\right) \leq O\left(n \sum\limits_{h=0}^{\infty}\frac{n}{2^{h+1}}\right)=O(n)$$
+
+> 即：BUILD-MAX-HEAP可以在 ***线性时间*** 内将一个无序数组建成一个最大堆。
+
+###### 堆排序算法(HEAPSORT)
+- [x] 基本思想：
+	> - ① 调用BUILD-MAX-HEAP将输入数组𝐴[1 … 𝑛]构建成一个最大堆；
+	> - ② 互置𝐴[1]和𝐴[𝑛]位置，使得堆的最大值位于数组正确位置；
+	> - ③ 减小堆的规模；
+	> - ④ 重新调整堆，保持最大堆性质。
+
+```算法
+HEAPSORT( A )
+1 BUILD-MAX-HEAP(A)
+2 for i ← length[A] downto 2
+3 	do exchange A[1] ↔ A[i]
+4 		heap-size[A] ← heap-size[A] -1
+5 		MAX-HEAPIFY( A, 1)
+```
+
+- [x] 时间复杂度分析：
+	> - ① 调用BUILD-MAX-HEAP时间为𝑂(𝑛);
+	> - ② 每次调用MAX-HEAPIFY代价为𝑂(lg𝑛),共调用𝑛 − 1次。
+	> - ③ 总时间复杂度：𝑶(𝒏𝐥𝐠𝒏)。
