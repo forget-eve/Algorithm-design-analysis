@@ -142,7 +142,7 @@ B --> C((输出))
 ##### 算法
 ```C
 NSERTION-SORT(A)                                               cost times
-1 for( j = 2; j <=length[A]; j++)                               c1   n
+1 for(j = 2; j <=length[A]; j++)                               c1   n
 2 {   key = A[j]                                                c2   n-1
 3     // Insert A[j] into the sorted sequence A[1 .. j-1]       0    n-1
 4     i = j-1                                                   c4   n-1
