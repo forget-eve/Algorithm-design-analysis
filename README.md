@@ -879,9 +879,9 @@ $$T(n)=3T(\lfloor \frac{n}{4}\rfloor)+n$$
 $$
 T(n)=
 \begin{cases}
-  \theta (𝑛\log_b{𝑎}), & 𝑓(𝑛)=𝑂(𝑛^{(\log_b{𝑎})−\epsilon}) for some 𝜀 > 0\newline
+  \theta (𝑛\log_b{𝑎}), & 𝑓(𝑛)=𝑂(𝑛^{(\log_b{𝑎})−\epsilon}) for \ some \ 𝜀 > 0\newline
   \theta(𝑛^{\log_b{a}}\lg n), & 𝑓(𝑛)= \theta(𝑛\log_b{𝑎}) \newline
-  \theta(𝑓(𝑛)) , & 𝑓(𝑛)=\Omega(𝑛^{(\log_b{a})+\epsilon}) for some 𝜀 > 0 \text{ and } 𝑎𝑓(\frac{𝑛}{𝑏})≤ 𝑐𝑓(𝑛) for large 𝑛 , 𝑐 < 1
+  \theta(𝑓(𝑛)) , & 𝑓(𝑛)=\Omega(𝑛^{(\log_b{a})+\epsilon}) for \ some \ 𝜀 > 0 \text{ and } 𝑎𝑓(\frac{𝑛}{𝑏})≤ 𝑐𝑓(𝑛) for \ large \ 𝑛 , 𝑐 < 1
 \end{cases}
 $$
 
