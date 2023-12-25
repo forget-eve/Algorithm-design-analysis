@@ -1511,7 +1511,7 @@ for i ← 1 to n
 > <span id="kaogang5-1-2">考点</span>
 
 - [x] ① 随机算法：强制应聘者以随机顺序出现,实现随机出现如下
-1. ➢ 为每个候选者分配一个秩：𝑟𝑎𝑛𝑘(𝑖)是1到n之前唯一的整数；
+1. ➢ 为每个候选者分配一个秩：𝑟𝑎𝑛𝑘(𝑖)是1到n之间唯一的整数；
 2. ➢ 列表< 𝑟𝑎𝑛𝑘 1 , … , 𝑟𝑎𝑛𝑘(𝑛) >形成对候选者编号< 1, … , 𝑛 >的一个随机扰动；
 3. ➢ 这些秩构成了一个随机均匀排列，共有𝑛!种等概率的面试顺序。
 
@@ -1529,6 +1529,8 @@ for i ← 1 to n
 > 猎头公司预先提供𝒏个候选人列表；每天随机选取一人进行面试。
 
 ##### 如何随机扰乱数组？
+> <span id="kaogang5-2">考点</span>
+
 - [x] 问题： 给定一个数组𝐴 =< 1,2, … , 𝑛 >，如何产生一个均匀随机扰乱？
 	> - ① 为每个元素𝐴[𝑖]分配一个随机数𝑃[𝑖]作为优先权；
 	> - ② 然后依据这些优先权对数组A进行排序。
@@ -1583,14 +1585,14 @@ for(i=1; i<=n; i++)
 $$
 I \lbrace A \rbrace =
 \begin{cases}
-1 &\text{if A occur} \\
+1 &\text{if A occur} \newline
 0 &\text{if A does not occur}
 \end{cases}
 $$
 
 - [x] 引理5.1：给定一个样本空间𝑆和𝑆中的一个事件𝐴，设 $𝑋_𝐴 = 𝐼\lbrace 𝐴\rbrace$ ，那么 $𝐸[𝑋_𝐴] = Pr \lbrace 𝐴 \rbrace$ 。
-	> 证明：由指示器随机变量定义，以及期望值的定义，有： $𝐸[𝑋_𝐴} = 𝐸[𝐼\lbrace 𝐴 \rbrace ]= 1 ∙ Pr \lbrace 𝐴 \rbrace + 0 ∙ Pr \lbrace overline{𝐴} \rbrace = Pr \lbrace 𝐴 \rbrace$ 
-	> > 其中 $overline{𝐴}$ 表示𝑆 − 𝐴，即A的补。
+	> 证明：由指示器随机变量定义，以及期望值的定义，有 $E[𝑋_𝐴] = E[𝐼 \lbrace 𝐴 \rbrace ]= 1 ∙ Pr \lbrace 𝐴 \rbrace + 0 ∙ Pr \lbrace \overline{𝐴} \rbrace = Pr \lbrace 𝐴 \rbrace$ 
+	> > 其中 $\overline{𝐴}$ 表示𝑆 − 𝐴，即A的补。
 
 > 例1：确定抛一次硬币正面向上的期望？
 > > 样本空间是{𝐻, 𝑇}，其中 $Pr \lbrace 𝐻 \rbrace = Pr \lbrace 𝑇 \rbrace = \frac{1}{2}$ 。
@@ -1618,7 +1620,7 @@ $$𝑋 = \sum\limits_{𝑖=1}^𝑛 𝑋_𝑖$$
 
 > > 对𝑋求期望，得到：
 
-$$𝐸[𝑋] = 𝐸[\sum\limits_{𝑖=1}^𝑛 𝑋_𝑖] = \sum\limits_{𝑖=1}^𝑛 𝐸[𝑋_𝑖] = \ssum\limits_{𝑖}^𝑛 \frac{1}{2} = \frac{n}{2}$$
+$$E[𝑋]=E[\sum\limits_{𝑖=1}^𝑛 𝑋_𝑖] = \sum\limits_{𝑖=1}^𝑛 E[𝑋_𝑖] = \sum\limits_{𝑖}^𝑛 \frac{1}{2} = \frac{n}{2}$$
 
 #### 传统概率分析方法
 > 假设候选人以随机顺序出现，随机变量𝑋表示雇佣新助手的人数，则有
@@ -1691,7 +1693,7 @@ $$𝑋 = \sum\limits_{𝑖=1}^𝑘 \sum\limits_{𝑗=𝑖+1}^𝑘 𝑋_{𝑖𝑗
 
 - [x] 两边取期望，可以得到
 
-$$𝐸[𝑋] = 𝐸\left[\sum\limits_{𝑖=1}^𝑘 \sum\limits_{𝑗=𝑖+1}^𝑘 𝑋_{𝑖𝑗} \right] = \sum\limits_{𝑖=1}^𝑘 \sum\limits_{𝑗=𝑖+1}^𝑘 𝐸[𝑋_{𝑖𝑗}] = C_2^k \frac{1}{𝑛} = \frac{𝑘(𝑘 − 1)}{2n}$$
+$$E[𝑋]=E \left[ \sum\limits_{𝑖=1}^𝑘 \sum\limits_{𝑗=𝑖+1}^𝑘 𝑋_{𝑖𝑗} \right]=\sum\limits_{i=1}^k \sum\limits_{j=i+1}^𝑘 E[𝑋_{𝑖𝑗}] = C_2^k \frac{1}{𝑛} = \frac{𝑘(𝑘 − 1)}{2n}$$
 
 - [x] 当 $𝑘(𝑘 − 1) ≥ 2𝑛$ 时，生日相同的两人对的期望至少是1。
 - [x] 对于𝑛 = 365，若𝑘 = 28人同处一屋，则可以期望至少有2个人生日相同。
@@ -1699,17 +1701,17 @@ $$𝐸[𝑋] = 𝐸\left[\sum\limits_{𝑖=1}^𝑘 \sum\limits_{𝑗=𝑖+1}^�
 ##### 传统方法
 - [x] 设假设 $𝐵_𝑘$ 表示𝑘人生日各不同的事件， $𝑃𝑟\lbrace 𝐵_𝑘 \rbrace$ 表示该事件发生的概率，则有
 
-$$Pr \lbrace 𝐵_𝑘 \rbrace = Pr \lbrace 𝐵_{𝑘−1} \rbrace Pr \lbrace 𝐴_𝑘|𝐵_{𝑘−1} \rbrace$$
+$$Pr \lbrace B_k \rbrace = Pr \lbrace B_{k−1} \rbrace Pr \lbrace A_k|B_{k−1} \rbrace$$
 
 - [x] 其中， $Pr \lbrace 𝐴_𝑘|𝐵_{𝑘−1} \rbrace$ 表示第𝑘个人和前面𝑘−1个人生日互不相同的概率，且有
 
-$$ \lbrace 𝐴_𝑘|𝐵_{𝑘−1} \rbrace= \frac{𝑛 − 𝑘 + 1}{𝑛}$$
+$$Pr \lbrace A_k|B_{k−1} \rbrace= \frac{n − k + 1}{n}$$
 
-- [x] 取 $Pr \lbrace 𝐵_1 \rbrace = Pr \lbrace 𝐴_1 \rbrace = 1$ 作为初始条件，有：
+- [x] 取 $Pr \lbrace B_1 \rbrace = Pr \lbrace A_1 \rbrace = 1$ 作为初始条件，有：
 
-$$Pr \lbrace 𝐵_𝑘 \rbrace = Pr \lbrace 𝐵_{𝑘−1} \rbrace Pr \lbrace 𝐴_𝑘 𝐵_{𝑘−1}\rbrace=⋯=$$
+$$Pr \lbrace B_k \rbrace = Pr \lbrace B_{k−1} \rbrace Pr \lbrace A_k B_{k−1}\rbrace=⋯=$$
 
-$$= 𝑃𝑟 \lbrace 𝐵_1 \rbrace 𝑃𝑟 \lbrace 𝐴_2|𝐵_1 \rbrace … 𝑃𝑟 \lbrace 𝐵_{𝑘−2} \rbrace Pr \lbrace 𝐴_{𝑘−1}|𝐵_{𝑘−2} \rbrace 𝑃𝑟 \lbrace 𝐴_𝑘|𝐵_{𝑘−1} \rbrace$$
+$$= Pr \lbrace B_1 \rbrace Pr \lbrace A_2|B_1 \rbrace...Pr \lbrace B_{k−2} \rbrace Pr \lbrace A_{k−1}|B_{k−2} \rbrace Pr \lbrace A_k|B_{k−1} \rbrace$$
 
 $$= 1⋅ \left(1−\frac{1}{𝑛}\right)⋅ \left(1−\frac{2}{𝑛}\right)... \left(1−\frac{k-1}{𝑛}\right)$$
 
@@ -1724,11 +1726,15 @@ $$Pr \lbrace 𝐵_𝑘 \rbrace ≤ 𝑒^{- \frac{1}{n}} 𝑒^{- \frac{2}{n}} ...
 - [x] 一个人如果想要收集齐𝑏种不同礼券中的每一种，大约需要 $𝑏ln𝑏$ 张随机得到的礼券才能成功。
 
 ### 1.5.3 在线雇佣问题
+> <span id="kaogang5-3-1">考点</span>
+
 #### 情景描述
-- [x] 假设现在不希望面试所有的应聘者来找到最好的一个，也不希望因为不断有更好的申请者出现而不停地雇用信任解雇旧人。愿意雇用接近最好的应聘者，只雇用一次。但是，必须遵守猎头公司的一个规定：在每次面试之后，必须给出面试结果，要么雇用候选人，要么拒绝。
+- [x] 假设现在不希望面试所有的应聘者来找到最好的一个，也不希望因为不断有更好的申请者出现而不停地雇用新人解雇旧人。愿意雇用接近最好的应聘者，只雇用一次。但是，必须遵守猎头公司的一个规定：在每次面试之后，必须给出面试结果，要么雇用候选人，要么拒绝。
 	> 目标：最小化面试次数和最大化雇用应聘者的质量取得平衡
 
 #### 解决思路
+> <span id="kaogang5-3-2">考点</span>
+
 - [x] ① 面试一个应聘者之后，给他分配一个分数。令𝑠𝑐𝑜𝑟𝑒(𝑖)表示给第𝑖个应聘者的分数，且假设所有应聘者得分都不相同；
 - [x] ② 面试前面𝑘个（𝑘 < 𝑛）应聘者然后拒绝他们，再雇佣其后比前面的应聘者更高分数的第一个应聘者。
 
@@ -1744,6 +1750,7 @@ ON-LINE-MAXIMUM (k, n)
 return n
 ```
 
+##### 概率分析
 - [x] 问题：该如何选择𝑘值才能以最大概率雇佣到最好的应聘者？
 - [x] 结论：如果用 $𝑘 = \frac{n}{e}$ 来实现策略，那么将以至少 $\frac{1}{𝑒}$ 的概率成功雇佣到最好的应聘者。
 
@@ -1943,7 +1950,7 @@ HEAPSORT( A )
 ## 5 概率分析(ch5)
 > 1. [雇佣问题](#kaogang5-1-1)及其[随机算法(略)](#kaogang5-1-2)
 > 2. [序列随机排列的两种方法及其复杂性](#kaogang5-2)
-> 3. [在线雇佣问题及其概率分析(略)](#kaogang5-3)
+> 3. [在线雇佣问题](#kaogang5-3-1)及其[概率分析(略)](#kaogang5-3-2)
 
 ## 6 堆排序(ch6)
 > 1  [堆的概念和存储结构](#kaogang6-1)
