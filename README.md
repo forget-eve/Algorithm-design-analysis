@@ -2420,7 +2420,7 @@ SELECT ( A, p, r, i ) {
 
 $$T(n) \leq c \lceil \frac{n}{5} \rceil + c \left(\frac{7n}{10}+6 \right)+ an \leq c \frac{n}{5} + c + c \frac{7n}{10}+6c+ an= \frac{9cn}{10} +1c+an=cn+ \left(- \frac{cn}{10}+7c+an \right)$$
 
-$$\leq cn, \text{if - \frac{cn}{10}+7c+an leq 0}$$
+$$\leq cn, \text{if } - \frac{cn}{10}+7c+an leq 0}$$
 
 > 假设𝑛 > 140时，𝑐 ≥ 20𝑎，该式就可以成立。
 
@@ -2532,7 +2532,19 @@ $$\leq cn, \text{if - \frac{cn}{10}+7c+an leq 0}$$
 ##### 删除元素
 - [x] 从一棵二叉搜索树中删除一个元素时，已知寻找待删除元素所需平均时间为O(log n)，最差时间为𝑂(𝑛)。删除操作所需时间为𝑂(1)。故而删除某个元素所需总时间平均时间复杂度为𝑂(log 𝑛)，最差时间复杂度为𝑂(𝑛)。
 
+<p align="center">
+  <img src="./img/二叉树时间复杂度.png" alt="二叉树时间复杂度">
+  <p align="center">
+   <span>二叉树时间复杂度</span>
+  </p>
+</p>
+
 ### 2.3.2 AVL树
+#### 概念
+- [x] 在计算机科学中，AVL树是最早被发明的自平衡二叉搜索树。AVL树得名于它的发明者G. M. Adelson-Velsky和 Evgenii Landis。它具有以下特点：
+	> - ✓ 它是一棵空树或它的左右两个子树的高度差的绝对值不超过1;
+	> - ✓ 左右两个子树都是一棵AVL树。
+
 ### 2.3.3 红黑树及扩张
 ### 2.3.4 B树/B+树/B*树
 
